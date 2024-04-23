@@ -1,7 +1,12 @@
 {
   "expo": {
     "name": "LuaYoga",
-    "slug": "LuaYoga",
+    "slug": "kmchm",
+    "platforms": [
+      "android",
+      "ios",
+      "web"
+    ],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -25,6 +30,21 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "e68be929-730a-4e67-a9af-06fa18a0082e"
+      }
+    },
+    "owner": "kmchmm",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/e68be929-730a-4e67-a9af-06fa18a0082e"
+    },
+    "plugins": [
+      "expo-font"
+    ]
   }
 }
