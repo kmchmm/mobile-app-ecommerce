@@ -4,9 +4,16 @@ import { StyleSheet, Text, View, Image, SafeAreaView, ScrollView, TextInput, Tou
 import { useFonts } from 'expo-font';
 import { useState } from 'react';
 import { AntDesign } from '@expo/vector-icons';
+import RBsheet from 'react-native-raw-bottom-sheet';
 
 export default function Bras () {
 
+    const [value, setValue] = React.useState(0);
+    const sheet = React.useRef();
+
+    React.useEffect(() =>{
+        sheet.current.open();
+    }, []);
 
     const [isPublicOpen, setPublicOpen] = useState(false);
     const [isPrivateOpen, setPrivateOpen] = useState(false);
@@ -68,7 +75,17 @@ export default function Bras () {
                         />
                         <Text style={{backgroundColor: '#f2f2f2', marginBottom: 9, marginTop: 5}}>NEW</Text>
                         <Text style={{fontFamily: 'Poppins-Bold'}}>Lorem Ipsum is simply dummy text.</Text>
-                        <Text>(Color)</Text>
+                        <RBsheet
+                        ref={sheet}
+                        height={440}
+                        openDuration={250}
+                        customStyles={{container: styles.sheet}}>
+                            <View style={styles.sheetBody}>
+                                <View style={styles.profile}>
+                                    <Text style={styles.profileText}>(Color)</Text>
+                                </View>
+                            </View>
+                        </RBsheet>
                         <Text style={{fontSize: 14}}>$0.00</Text>
                     </View>
                     <View style={[styles.brasGridImagesWrap]}>
@@ -216,5 +233,31 @@ const styles = StyleSheet.create({
       arrowContent: {
         marginRight: 10,
         marginTop: 10
+      },
+      sheetBody: {
+        padding: 24,
+      },
+      profile: {
+        alignSelf: 'center',
+        width: 100,
+        height: 100,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#f1f1f1',
+        borderRadius: 9999,
+        marginBottom: 24,
+        shadowColor: '#000',
+        shadowOffset:{
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.29,
+        shadowRadius: 4.65,
+        elevation: 7,
+      },
+      profileText: {
+        fontSize: 24,
+        fontWeight: '600',
+        color: '#fff'
       }
 })
